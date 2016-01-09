@@ -79,7 +79,8 @@ module HackT
         HackTNet::Post '/bank/transfer',        auth_token: auth_token, contact_id: contact_id, amount: amount
       end
 
-      def TransferBankFundsFromVictim()
+      def TransferBankFundsFromVictim(auth_token, victim_id, amount, pin = nil)
+        HackTNet::Post '/bank/transfer_from',   auth_token: auth_token, id: victim_id, amount: amount
       end
 
       def LogInfo(auth_token, id = 'my')

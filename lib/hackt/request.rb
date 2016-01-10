@@ -152,6 +152,14 @@ module HackT
         HackTNet::Get  '/process/info',         auth_token: auth_token
       end
 
+      def ProcessOverclock(auth_token, process_id)
+        HackTNet::Post '/process/overclock',    auth_token: auth_token, process_id: process_id
+      end
+
+      def ProcessRetry(auth_token, process_id)
+        HackTNet::Post '/process/retry',        auth_token: auth_token, process_id: process_id
+      end
+
       def EndProcess(auth_token, process_id)
         HackTNet::Post '/process/end',          auth_token: auth_token, process_id: process_id
       end

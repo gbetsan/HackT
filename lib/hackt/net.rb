@@ -4,7 +4,7 @@ module HackT
     require 'json'
     class << self
 
-      def Get(uri, params, prevent_errors = false)
+      def Get(uri, params, prevent_errors = true)
         uri = URI(HackT::URL + uri)
         uri.query = URI.encode_www_form(params)
         response = Net::HTTP.get_response(uri)
@@ -14,9 +14,11 @@ module HackT
         else
           raise HackT::HackTError, "Not OK: #{response.inspect}" unless prevent_errors
         end
+      rescue
+        raise HackT::HackTError, "Not OK: #{response.inspect}" unless prevent_errors
       end
 
-      def Post(uri, params, prevent_errors = false)
+      def Post(uri, params, prevent_errors = true)
         uri = URI(HackT::URL + uri)
         response = Net::HTTP.post_form(uri, params)
         if response.is_a?(Net::HTTPSuccess)
@@ -24,6 +26,8 @@ module HackT
         else
           raise "Not OK: #{response.inspect}" unless prevent_errors
         end
+      rescue
+        raise HackT::HackTError, "Not OK: #{response.inspect}" unless prevent_errors
       end
 
       def Do(http)

@@ -164,6 +164,14 @@ module HackT
         HackTNet::Post '/process/end',          auth_token: auth_token, process_id: process_id
       end
 
+      def IdShortInfo(auth_token, id)
+        HackTNet::Get '/player/short_info', auth_token: auth_token, id: id
+      end
+
+      def IpShortInfo(auth_token, ip)
+        HackTNet::Get '/player/short_info', auth_token: auth_token, ip: ip
+      end
+
     end
   end
 end

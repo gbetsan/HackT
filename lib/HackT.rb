@@ -4,6 +4,6 @@ module HackT
   require 'hackt/request'
 
 
-  VERSION = '0.0.4'
+  VERSION = '0.0.5'
   URL = 'http://melgarn.xyz/'
 end

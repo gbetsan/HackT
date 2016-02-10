@@ -172,6 +172,10 @@ module HackT
         HackTNet::Get '/player/short_info', auth_token: auth_token, ip: ip
       end
 
+      def Leaderboard(auth_token)
+        HackTNet::Get '/player/leaderboard', auth_token: auth_token
+      end
+
     end
   end
 end
